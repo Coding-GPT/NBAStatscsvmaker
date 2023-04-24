@@ -8,7 +8,7 @@ counter = 0
 
 # Assuming you have the sorted_games dataframe with GAME_ID and TEAM_ID columns created earlier in the script
 # Import the CSV file as the sorted_games dataframe
-loaded_games = pd.read_csv('nba_games_2017_to_2022.csv',
+loaded_games = pd.read_csv('NBAschedule17to22.csv',
                            dtype={'GAME_ID': str})
 
 # Get the top 20 rows of the sorted_games dataframe
@@ -29,8 +29,10 @@ for index, row in loaded_games.iterrows():
       1]  # Access the second dataframe for team stats
 
     team_stats = boxscore.loc[boxscore["TEAM_ID"] == team_id]
+    #print(advanced_stats.head(3))
 
     advanced_stats = pd.concat([advanced_stats, team_stats], ignore_index=True)
+    #print(advanced_stats.head(3))
 
   except Exception as e:
     print("Could not retrieve the advanced stats for game:", game_id)
